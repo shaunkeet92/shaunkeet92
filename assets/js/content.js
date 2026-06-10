@@ -235,7 +235,7 @@ const EFGH_AUDIT = {
   results: {
     headingPrefix: "Here's how EFGH can help",
     headingFallback: "Here's how EFGH can help your business",
-    subtitle: "Based on your website and answers, these capabilities are the strongest fit. The closer the match, the more impact we expect.",
+    subtitle: "Based on your website, these capabilities are the strongest fit. The closer the match, the more impact we expect.",
     couldNotReadSiteNote: "We couldn't fully read your website automatically. Talk to our team for a tailored review of how EFGH can help.",
     labels: {
       strong: "Strong fit",
