@@ -70,7 +70,7 @@ const EFGH_AUDIT = {
   hero: {
     eyebrow: "Free Capability Audit",
     title: "See how EFGH can grow your business",
-    subtitle: "Paste your website and answer two quick questions. In seconds we'll show you which EFGH capabilities — embedded insurance, payments, SME financing and more — best fit your business.",
+    subtitle: "Just paste your website link. In seconds we'll show you which EFGH capabilities — embedded insurance, payments, SME financing and more — best fit your business.",
     urlLabel: "Your website",
     urlPlaceholder: "yourcompany.com",
     submitButton: "Run my free audit",
@@ -78,53 +78,27 @@ const EFGH_AUDIT = {
   },
 
   /* ===========================================================================
-     3. QUESTIONS  —  asked alongside the URL to sharpen the match.
+     3. QUESTIONS  —  OPTIONAL quick questions asked alongside the URL.
      ---------------------------------------------------------------------------
-     Each answer carries "tags". Tags connect to capabilities further down
-     (see each capability's "matchTags"). The more an answer's tags overlap a
-     capability, the higher that capability scores.
+     Currently OFF: visitors simply paste their link and the audit scores them
+     purely from scanning their website. The list below is empty, so no
+     questions are shown.
 
-     To add a question: copy one { ... } block. To add an answer: copy one
-     option { ... } line. Keep the commas.
+     WANT TO TURN QUESTIONS BACK ON? Add question blocks into this list. Each
+     answer can carry "tags" that connect to a capability's "matchTags" further
+     down, nudging that capability's score up. Example of one question:
+
+       {
+         id: "businessType",
+         label: "What best describes your business?",
+         helper: "Pick the closest match.",
+         options: [
+           { label: "E-commerce / marketplace", tags: ["ecommerce", "marketplace"] },
+           { label: "Financial services",       tags: ["fintech", "payments"] }
+         ]
+       }
      =========================================================================== */
-  questions: [
-    {
-      id: "businessType",
-      label: "What best describes your business?",
-      helper: "Pick the closest match.",
-      options: [
-        { label: "E-commerce / online marketplace", tags: ["ecommerce", "marketplace", "sells-products", "b2c", "growth"] },
-        { label: "Financial services / fintech",     tags: ["fintech", "financial-services", "regulated", "payments", "risk"] },
-        { label: "SaaS / digital platform",          tags: ["platform", "b2b", "growth", "distribution"] },
-        { label: "Logistics, mobility or travel",    tags: ["logistics", "travel", "mobility", "sells-products", "b2c"] },
-        { label: "We serve small businesses (B2B)",  tags: ["serves-smes", "b2b", "lending", "financing"] },
-        { label: "Something else",                   tags: ["general"] }
-      ]
-    },
-    {
-      id: "customers",
-      label: "Who are your primary customers?",
-      helper: "Who buys from you most?",
-      options: [
-        { label: "Everyday consumers",                  tags: ["b2c", "consumers", "distribution"] },
-        { label: "Small & medium businesses (SMEs)",    tags: ["serves-smes", "b2b", "financing"] },
-        { label: "Large enterprises / institutions",    tags: ["enterprise", "b2b", "regulated"] },
-        { label: "Underserved or emerging markets",     tags: ["underserved", "emerging-markets", "inclusion"] }
-      ]
-    },
-    {
-      id: "priority",
-      label: "What's your top priority right now?",
-      helper: "What would move the needle most?",
-      options: [
-        { label: "Add new revenue streams",        tags: ["embedded", "distribution", "growth"] },
-        { label: "Move money / improve payments",  tags: ["payments", "wallet"] },
-        { label: "Offer financing or credit",      tags: ["financing", "lending", "serves-smes"] },
-        { label: "Reduce fraud & manage risk",     tags: ["risk", "regulated", "fintech"] },
-        { label: "Reach & convert more customers", tags: ["growth", "distribution", "b2c"] }
-      ]
-    }
-  ],
+  questions: [],
 
   /* ===========================================================================
      4. CAPABILITIES  —  what EFGH offers. This is the core of the audit.
@@ -262,7 +236,7 @@ const EFGH_AUDIT = {
     headingPrefix: "Here's how EFGH can help",
     headingFallback: "Here's how EFGH can help your business",
     subtitle: "Based on your website and answers, these capabilities are the strongest fit. The closer the match, the more impact we expect.",
-    couldNotReadSiteNote: "We couldn't fully read your site, so this is based mainly on your answers. Talk to our team for a deeper review.",
+    couldNotReadSiteNote: "We couldn't fully read your website automatically. Talk to our team for a tailored review of how EFGH can help.",
     labels: {
       strong: "Strong fit",
       potential: "Worth exploring",
@@ -285,16 +259,12 @@ const EFGH_AUDIT = {
         body: "We fetch your homepage and scan its text — headings, descriptions and copy — for signals about what your business does and who it serves."
       },
       {
-        title: "We listen to your answers",
-        body: "Your answers to the quick questions tell us your business type, customers and priorities, filling in anything the website can't."
-      },
-      {
         title: "We match against EFGH capabilities",
-        body: "Each EFGH capability has a profile of relevant keywords and business signals. We compare your business to every capability's profile."
+        body: "Each EFGH capability has a profile of relevant keywords and business signals. We compare your website to every capability's profile."
       },
       {
         title: "We score and rank the fit",
-        body: "Each capability gets a fit score from website keyword matches and overlapping signals. We rank them so the strongest opportunities surface first."
+        body: "Each capability gets a fit score from the keyword matches found on your site. We rank them so the strongest opportunities surface first."
       }
     ],
     disclaimer: "Results are indicative and generated automatically. For a tailored plan, speak with the EFGH team."

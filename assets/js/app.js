@@ -41,6 +41,12 @@
   function renderQuestions() {
     const wrap = $("questionsBlock");
     wrap.innerHTML = "";
+    // No questions configured? Hide the whole block (and its divider).
+    if (!CFG.questions || CFG.questions.length === 0) {
+      wrap.classList.add("hidden");
+      return;
+    }
+    wrap.classList.remove("hidden");
     CFG.questions.forEach((q) => {
       const block = document.createElement("div");
       block.className = "q-block";
@@ -145,7 +151,6 @@
     // Animate the loader steps for a sense of progress.
     const steps = [
       "Reading your website…",
-      "Understanding your answers…",
       "Matching EFGH capabilities…",
       "Scoring your fit…"
     ];
