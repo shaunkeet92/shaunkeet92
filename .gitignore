@@ -1,0 +1,10 @@
+# Local preview screenshots (generated, not part of the site)
+.preview/
+
+# Dependencies / build artifacts
+node_modules/
+
+# OS / editor cruft
+.DS_Store
+Thumbs.db
+*.log
