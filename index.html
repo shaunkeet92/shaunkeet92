@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Free Capability Audit | EFGH</title>
+  <meta name="description" content="Paste your website and discover which EFGH capabilities — embedded insurance, payments, SME financing and more — can grow your business." />
+
+  <!-- Montserrat (EFGH typeface) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+
+  <!-- Demo-mode notice: shown automatically until you add your Formspree link -->
+  <div id="demoBanner" class="demo-banner hidden">
+    Demo mode — leads are not being sent yet. Add your form endpoint in <strong>assets/js/content.js</strong>.
+  </div>
+
+  <!-- Navigation -->
+  <header class="nav">
+    <div class="nav-inner">
+      <a class="brand" href="https://efgh.xyz">
+        <span class="brand-mark" id="brandMark">EFGH</span>
+        <span class="brand-sub" id="brandSub">Capability Audit</span>
+      </a>
+      <a class="nav-link" id="navCta" href="https://efgh.xyz">Visit EFGH ↗</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============================= HERO / INPUT ============================ -->
+    <section class="hero" id="heroSection">
+      <div class="container">
+        <div class="hero-inner">
+          <span class="eyebrow" id="heroEyebrow"></span>
+          <h1 class="display" id="heroTitle"></h1>
+          <p class="hero-subtitle" id="heroSubtitle"></p>
+        </div>
+
+        <form class="audit-card" id="auditForm" novalidate>
+          <div class="field">
+            <label class="field-label" for="urlInput" id="urlLabel"></label>
+            <div class="url-row">
+              <input class="input" type="text" id="urlInput" autocomplete="url" />
+              <button type="submit" class="btn btn-red btn-lg" id="submitBtn"></button>
+            </div>
+            <div class="field-error" id="urlError"><span>⚠</span><span>Please enter a valid website address.</span></div>
+            <p class="disclaimer" id="heroDisclaimer"></p>
+          </div>
+
+          <!-- Quick questions injected here from content.js -->
+          <div class="questions" id="questionsBlock"></div>
+        </form>
+      </div>
+    </section>
+
+    <!-- ============================= LOADING ================================= -->
+    <section class="container hidden" id="loaderSection">
+      <div class="loader">
+        <div class="spinner"></div>
+        <p class="body-lg" id="loaderTitle">Analysing your business…</p>
+        <ul class="loader-steps" id="loaderSteps"></ul>
+      </div>
+    </section>
+
+    <!-- ============================= RESULTS ================================= -->
+    <section class="results hidden" id="resultsSection">
+      <div class="container">
+        <div class="results-head">
+          <span class="eyebrow">Your results</span>
+          <h2 class="h1" id="resultsHeading"></h2>
+          <p class="muted" id="resultsSubtitle"></p>
+          <div id="resultsNote" class="results-note hidden"></div>
+        </div>
+        <div class="cap-grid" id="capGrid"></div>
+        <div class="results-actions">
+          <button class="btn btn-red btn-lg" id="talkBtn"></button>
+          <button class="btn btn-tertiary btn-lg" id="restartBtn"></button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================= METHODOLOGY ============================= -->
+    <section class="dark-section" id="methodSection">
+      <div class="container">
+        <div class="method-head">
+          <h2 class="h2" id="methodTitle"></h2>
+          <p id="methodIntro"></p>
+        </div>
+        <div class="method-grid" id="methodGrid"></div>
+        <p class="method-disclaimer" id="methodDisclaimer"></p>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============================= FOOTER ================================= -->
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p class="footer-note" id="footerNote"></p>
+      <nav class="footer-links" id="footerLinks"></nav>
+      <p class="footer-copy" id="footerCopy"></p>
+    </div>
+  </footer>
+
+  <!-- ============================= LEAD MODAL ============================= -->
+  <div class="modal-overlay" id="leadModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal">
+      <!-- Form view -->
+      <div id="modalFormView">
+        <div class="modal-head">
+          <div>
+            <h3 class="modal-title" id="modalTitle"></h3>
+            <p class="modal-subtitle" id="modalSubtitle"></p>
+          </div>
+          <button class="modal-close" id="modalClose" aria-label="Close">×</button>
+        </div>
+
+        <div class="form-error-banner" id="formErrorBanner"></div>
+
+        <form id="leadForm" novalidate>
+          <div class="form-grid">
+            <div class="field">
+              <label class="field-label" for="leadName" id="lblName"></label>
+              <input class="input" type="text" id="leadName" name="name" />
+              <div class="field-error" id="errName"><span>⚠</span><span>Please enter your name.</span></div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="leadEmail" id="lblEmail"></label>
+              <input class="input" type="email" id="leadEmail" name="email" />
+              <div class="field-error" id="errEmail"><span>⚠</span><span>Please enter a valid work email.</span></div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="leadPhone" id="lblPhone"></label>
+              <input class="input" type="tel" id="leadPhone" name="phone" />
+              <div class="field-error" id="errPhone"><span>⚠</span><span>Please enter your contact number.</span></div>
+            </div>
+            <div class="field">
+              <label class="field-label" for="leadRequest" id="lblRequest"></label>
+              <select class="select" id="leadRequest" name="requestType"></select>
+            </div>
+            <div class="field form-full">
+              <label class="field-label" for="leadMessage" id="lblMessage"></label>
+              <textarea class="textarea" id="leadMessage" name="message"></textarea>
+              <div class="char-counter" id="charCounter">0/1000</div>
+              <div class="field-error" id="errMessage"><span>⚠</span><span>Please add a short message.</span></div>
+            </div>
+          </div>
+
+          <p class="consent" id="consentText"></p>
+          <button type="submit" class="btn btn-red btn-block btn-lg" id="leadSubmit"></button>
+        </form>
+      </div>
+
+      <!-- Success view -->
+      <div id="modalSuccessView" class="modal-success hidden">
+        <div class="success-icon">✓</div>
+        <h3 id="successTitle"></h3>
+        <p id="successBody"></p>
+        <button class="btn btn-tertiary btn-lg" id="successClose" style="margin-top:24px">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Scripts: content first (your editable file), then the engine, then app -->
+  <script src="assets/js/content.js"></script>
+  <script src="assets/js/audit.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
